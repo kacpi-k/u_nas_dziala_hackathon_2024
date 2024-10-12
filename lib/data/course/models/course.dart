@@ -1,3 +1,5 @@
+import 'package:u_nas_dziala_hackathon_2024/data/course/models/schedule_event.dart';
+
 class CourseModel {
   final String courseId;
   final String title;
@@ -7,6 +9,7 @@ class CourseModel {
   final List<String> speakers;
   final List<String> participants;
   final List<String> materials;
+  final List<ScheduleEventModel>? schedule;
   final DateTime createdAt;
 
   CourseModel({
@@ -18,6 +21,7 @@ class CourseModel {
     required this.speakers,
     required this.participants,
     required this.materials,
+    this.schedule,
     required this.createdAt,
   });
 }
