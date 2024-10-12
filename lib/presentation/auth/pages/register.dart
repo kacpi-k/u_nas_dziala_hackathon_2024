@@ -42,7 +42,7 @@ class _MyWidgetState extends State<RegisterPage> {
             border: OutlineInputBorder(),
             hintText: 'Email',
             fillColor: AppColors.secondBackground,
-            hintStyle: TextStyle(color: Colors.black38)),
+            hintStyle: TextStyle(color: Colors.black38, )),
       ),
     );
   }
