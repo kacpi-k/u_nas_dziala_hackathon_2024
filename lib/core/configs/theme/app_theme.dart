@@ -6,7 +6,7 @@ class AppTheme {
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.background,
     brightness: Brightness.dark,
-    fontFamily: 'CircularStd',
+    fontFamily: 'Roboto',
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppColors.background,
       contentTextStyle: TextStyle(color: Colors.white),
