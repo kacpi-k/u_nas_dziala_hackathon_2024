@@ -4,6 +4,7 @@ import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_theme.dart';
 import 'package:u_nas_dziala_hackathon_2024/firebase_options.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 import 'package:u_nas_dziala_hackathon_2024/service_locator.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
