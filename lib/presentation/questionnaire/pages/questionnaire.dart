@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_page_signed.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/questionnaire/widgets/starRating.dart';
 
 class Questionnaire extends StatelessWidget {
@@ -103,7 +105,17 @@ class Questionnaire extends StatelessWidget {
               SizedBox(height: 30,),
               ElevatedButton(
                 
-                onPressed: (){}, 
+                onPressed: (){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Ankieta została wysłana!'),
+                      behavior: SnackBarBehavior.floating,
+                      duration: Duration(seconds: 3),)
+                  );
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                    return HomePage();
+                  }));
+                }, 
                 child: Text('Wyslij ankietę',
                           style: TextStyle(color: Colors.black54, fontSize: 20)))
             ],

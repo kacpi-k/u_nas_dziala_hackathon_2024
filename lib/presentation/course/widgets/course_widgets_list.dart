@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatRoom_main.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/attachment_page.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/schedule_page.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/questionnaire/pages/questionnaire.dart';
 
 class CourseWidgetList extends StatelessWidget {
   const CourseWidgetList({super.key});

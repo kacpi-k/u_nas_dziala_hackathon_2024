@@ -22,7 +22,7 @@ class CoursePageSigned extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppbar(),
+      appBar: const BasicAppbar(title: Text('Szkolenie')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -36,7 +36,7 @@ class CoursePageSigned extends StatelessWidget {
               const SizedBox(height: 20),
               const Center(
                   child: Text(
-                'Cele szkolenia',
+                'Zasoby',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
