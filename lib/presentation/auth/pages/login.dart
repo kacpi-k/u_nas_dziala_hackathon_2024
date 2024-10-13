@@ -149,20 +149,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _signinButton(BuildContext context) {
-    return Builder(builder: (context) {
-      return BasicReactiveButton(
-        onPressed: () {
-          UserSigninReq req = UserSigninReq(
-            email: _emailController.text,
-            password: _passwordController.text,
-          );
-          context.read<ButtonStateCubit>().execute(
-                usecase: SigninUseCase(),
-                params: req,
-              );
-        },
-        title: 'Zaloguj',
-      );
-    });
+    return Builder(
+      builder: (context) {
+        return BasicReactiveButton(
+          onPressed: () {
+            UserSigninReq req = UserSigninReq(
+              email: _emailController.text,
+              password: _passwordController.text,
+            );
+            context.read<ButtonStateCubit>().execute(
+                  usecase: SigninUseCase(),
+                  params: req,
+                );
+          },
+          title: 'Zaloguj',
+        );
+      },
+    );
   }
 }

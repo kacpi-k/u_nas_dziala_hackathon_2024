@@ -6,7 +6,6 @@ import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigato
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/category/entity/category_entity.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/all_categories/pages/all_categories.dart';
-import 'package:u_nas_dziala_hackathon_2024/presentation/category_courses/pages/category_pages.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});

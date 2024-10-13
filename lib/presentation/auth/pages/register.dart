@@ -84,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           );
                         },
                         child: const Text(
-                          'Stwórz je tutaj!',
+                          'Zaloguj się!',
                           style: TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                         ),
