@@ -17,6 +17,7 @@ import 'package:u_nas_dziala_hackathon_2024/domain/auth/usecases/singin.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/category/repository/category_repository.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/category/usecases/get_categories.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/repository/course_repository.dart';
+import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/enroll_for_course.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/get_courses.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/get_courses_by_category_id.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/get_new_in.dart';
@@ -46,6 +47,7 @@ Future<void> initializeDependecies() async {
   sl.registerSingleton<GetCoursesUseCase>(GetCoursesUseCase());
   sl.registerSingleton<GetCoursesByCategoryIdUseCase>(
       GetCoursesByCategoryIdUseCase());
+  sl.registerSingleton<EnrollForCourseUseCase>(EnrollForCourseUseCase());
 
   // AUTH
   sl.registerSingleton<GetUserUseCase>(GetUserUseCase());

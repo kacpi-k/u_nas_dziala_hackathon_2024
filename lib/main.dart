@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      home: SchedulePage(),
+      home: HomePage(),
     );
   }
 }

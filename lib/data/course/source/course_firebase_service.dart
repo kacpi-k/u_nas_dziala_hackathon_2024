@@ -51,4 +51,19 @@ class CourseFirebaseService extends CourseService {
       );
     }
   }
+  
+  @override
+  Future<Either> enrollForCourse(String userId, String courseId) async {
+    try {
+      DocumentReference courseRef = FirebaseFirestore.instance.collection('Courses').doc(courseId);
+
+      await courseRef.update({
+        'participants': FieldValue.arrayUnion([userId])
+      });
+
+      return const Right(null);
+    } catch (e) {
+      return Left('Failed to enroll for the course: ${e.toString()}');  // Błąd
+    }
+  }
 }

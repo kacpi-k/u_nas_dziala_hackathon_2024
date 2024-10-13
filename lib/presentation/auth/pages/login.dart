@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/bloc/button/button_state.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/bloc/button/button_state_cubit.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigator.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_reactive_button.dart';
+import 'package:u_nas_dziala_hackathon_2024/core/configs/assets/app_images.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/data/auth/models/user_sigin_req.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/auth/usecases/singin.dart';
@@ -25,6 +27,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(
+        hideBack: true,
+        title: const Text('Logowanie'),
+      ),
       body: BlocProvider(
         create: (context) => ButtonStateCubit(),
         child: BlocListener<ButtonStateCubit, ButtonState>(
@@ -49,8 +55,20 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _loginText(context),
-                const SizedBox(height: 20),
+                //_loginText(context),
+                Container(
+                  height: 197 * 0.75,
+                  width: 321 * 0.75,
+                  decoration: BoxDecoration(
+                    image: const DecorationImage(
+                      image: AssetImage(
+                        AppImages.ppptLogoWhite,
+                      ),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 40),
                 _emailField(context),
                 const SizedBox(height: 10),
                 _passwordField(context),
