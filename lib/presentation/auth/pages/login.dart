@@ -31,76 +31,78 @@ class _LoginPageState extends State<LoginPage> {
         hideBack: true,
         title: const Text('Logowanie'),
       ),
-      body: BlocProvider(
-        create: (context) => ButtonStateCubit(),
-        child: BlocListener<ButtonStateCubit, ButtonState>(
-          listener: (context, state) {
-            if (state is ButtonFailureState) {
-              var snackbar = SnackBar(
-                content: Text(state.errorMessage),
-                behavior: SnackBarBehavior.floating,
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackbar);
-            }
-            if (state is ButtonSuccessState) {
-              AppNavigator.pushAndRemove(
-                context,
-                const HomePage(),
-              );
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 48),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                //_loginText(context),
-                Container(
-                  height: 197 * 0.75,
-                  width: 321 * 0.75,
-                  decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage(
-                        AppImages.ppptLogoWhite,
+      body: SingleChildScrollView(
+        child: BlocProvider(
+          create: (context) => ButtonStateCubit(),
+          child: BlocListener<ButtonStateCubit, ButtonState>(
+            listener: (context, state) {
+              if (state is ButtonFailureState) {
+                var snackbar = SnackBar(
+                  content: Text(state.errorMessage),
+                  behavior: SnackBarBehavior.floating,
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackbar);
+              }
+              if (state is ButtonSuccessState) {
+                AppNavigator.pushAndRemove(
+                  context,
+                  const HomePage(),
+                );
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 48),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  //_loginText(context),
+                  Container(
+                    height: 197 * 0.75,
+                    width: 321 * 0.75,
+                    decoration: BoxDecoration(
+                      image: const DecorationImage(
+                        image: AssetImage(
+                          AppImages.ppptLogoWhite,
+                        ),
+                        fit: BoxFit.fill,
                       ),
-                      fit: BoxFit.fill,
                     ),
                   ),
-                ),
-                const SizedBox(height: 40),
-                _emailField(context),
-                const SizedBox(height: 10),
-                _passwordField(context),
-                const SizedBox(height: 25),
-                _signinButton(context),
-                const SizedBox(height: 35),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Nie masz konta? '),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                BlocProvider<ButtonStateCubit>(
-                              create: (context) => ButtonStateCubit(),
-                              child: const RegisterPage(),
+                  const SizedBox(height: 40),
+                  _emailField(context),
+                  const SizedBox(height: 10),
+                  _passwordField(context),
+                  const SizedBox(height: 25),
+                  _signinButton(context),
+                  const SizedBox(height: 35),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Nie masz konta? '),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  BlocProvider<ButtonStateCubit>(
+                                create: (context) => ButtonStateCubit(),
+                                child: const RegisterPage(),
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Załóż je tutaj!',
-                        style: TextStyle(
-                            color: Colors.blue, fontWeight: FontWeight.bold),
-                      ),
-                    )
-                  ],
-                ),
-              ],
+                          );
+                        },
+                        child: const Text(
+                          'Załóż je tutaj!',
+                          style: TextStyle(
+                              color: Colors.blue, fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
