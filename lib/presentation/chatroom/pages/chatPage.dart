@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
+import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatRoomServices/chatRoomServices.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/widgets/chatBubble.dart';
 
@@ -48,23 +49,36 @@ class _ChatpageState extends State<ChatPage> {
   }
 
   Widget _buildMessageInput() {
-    return Row(
-      children: [
-        Expanded(
-            child: TextField(
-          controller: _message,
-          obscureText: false,
-          decoration: const InputDecoration(
-            hintText: 'Napisz wiadomość...',
-          ),
-        )),
-        IconButton(
-            onPressed: sendMessage,
-            icon: const Icon(
-              Icons.arrow_upward,
-              size: 40,
-            ))
-      ],
+    return Container(
+      margin: EdgeInsets.only(
+        left: 16,
+        right: 16,
+        bottom: 5
+      ),
+      child: Row(
+        children: [
+          Expanded(
+              child: TextField(
+            controller: _message,
+            obscureText: false,
+            cursorColor: Colors.black54,
+            style: TextStyle(color: Colors.black54),
+            
+            decoration: const InputDecoration(
+              
+              hintStyle: TextStyle(color: Colors.black38),
+              hintText: 'Napisz wiadomość...',
+            ),
+          )),
+          IconButton(
+              onPressed: sendMessage,
+              icon: const Icon(
+                color: AppColors.niceOrange,
+                Icons.arrow_upward,
+                size: 40,
+              ))
+        ],
+      ),
     );
   }
 
