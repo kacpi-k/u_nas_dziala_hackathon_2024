@@ -113,7 +113,7 @@ class _ChatpageState extends State<ChatPage> {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
 
           return ListView(
