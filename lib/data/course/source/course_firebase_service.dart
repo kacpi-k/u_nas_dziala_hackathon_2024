@@ -23,12 +23,26 @@ class CourseFirebaseService extends CourseService {
       );
     }
   }
-  
+
   @override
   Future<Either> getCourses() async {
     try {
+      var returnedData =
+          await FirebaseFirestore.instance.collection('Courses').get();
+      return Right(returnedData.docs.map((e) => e.data()).toList());
+    } catch (e) {
+      return const Left(
+        'Please try again',
+      );
+    }
+  }
+
+  @override
+  Future<Either> getCoursesByCategoryId(String categoryId) async {
+    try {
       var returnedData = await FirebaseFirestore.instance
           .collection('Courses')
+          .where('categoryId', isEqualTo: categoryId)
           .get();
       return Right(returnedData.docs.map((e) => e.data()).toList());
     } catch (e) {

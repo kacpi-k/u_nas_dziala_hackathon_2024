@@ -3,6 +3,7 @@ import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/schedule_event_
 
 class CourseEntity {
   final String courseId;
+  final String categoryId;
   final String title;
   final String description;
   final String img;
@@ -16,6 +17,7 @@ class CourseEntity {
 
   CourseEntity({
     required this.courseId,
+    required this.categoryId,
     required this.title,
     required this.description,
     required this.img,
