@@ -19,7 +19,7 @@ class CoursePage extends StatelessWidget {
       'Marek Towarek'
     ];
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: const BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(

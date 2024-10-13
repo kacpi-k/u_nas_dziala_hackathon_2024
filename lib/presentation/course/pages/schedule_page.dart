@@ -7,12 +7,17 @@ class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: const BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            Center(child: Text('Harmonogram', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),)),
+            const Center(
+              child: Text(
+                'Harmonogram',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ),
             Expanded(
               child: ListView(
                 children: [
@@ -30,36 +35,36 @@ class SchedulePage extends StatelessWidget {
   }
 }
 
-DataTable _createDataTable(){
-  return DataTable(columns: _columns(), rows: _rows(),columnSpacing: 16,);
+DataTable _createDataTable() {
+  return DataTable(
+    columns: _columns(),
+    rows: _rows(),
+    columnSpacing: 16,
+  );
 }
 
-List<DataColumn> _columns(){
+List<DataColumn> _columns() {
   return [
-    DataColumn(
-    
-    label: Text('Wydarzenie',)),
-    DataColumn(
-    label: Text('Zakończenie')),
-    DataColumn(
-    label: Text('Rozpoczęcie'))
+    const DataColumn(
+        label: Text(
+      'Wydarzenie',
+    )),
+    const DataColumn(label: Text('Zakończenie')),
+    const DataColumn(label: Text('Rozpoczęcie'))
   ];
 }
-List<DataRow> _rows(){
-  return[
-    DataRow(
-      cells: [
+
+List<DataRow> _rows() {
+  return [
+    const DataRow(cells: [
       DataCell(Text('8:00')),
       DataCell(Text('9:00')),
       DataCell(Text('Sniadanie'))
     ]),
-     DataRow(cells: [
+    const DataRow(cells: [
       DataCell(Text('9:00')),
       DataCell(Text('11:00')),
       DataCell(Text('Panel "Java dla poczatkujacych"'))
     ])
-
   ];
 }
-
-
