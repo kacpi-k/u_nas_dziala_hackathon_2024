@@ -7,6 +7,7 @@ class CourseEntity {
   final String title;
   final String description;
   final String img;
+  final int price;
   final Timestamp date;
   final List<String> goals;
   final List<String> organizers;
@@ -22,6 +23,7 @@ class CourseEntity {
     required this.title,
     required this.description,
     required this.img,
+    required this.price,
     required this.date,
     required this.goals,
     required this.organizers,

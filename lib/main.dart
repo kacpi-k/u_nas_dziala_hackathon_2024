@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      home: ChatRoomMain(),
+      home: HomePage(),
     );
   }
 }

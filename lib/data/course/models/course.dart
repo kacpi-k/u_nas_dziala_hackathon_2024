@@ -8,6 +8,7 @@ class CourseModel {
   final String title;
   final String description;
   final String img;
+  final int price;
   final Timestamp date;
   final List<String> goals;
   final List<String> organizers;
@@ -23,6 +24,7 @@ class CourseModel {
     required this.title,
     required this.description,
     required this.img,
+    required this.price,
     required this.date,
     required this.goals,
     required this.organizers,
@@ -40,6 +42,7 @@ class CourseModel {
       'title': title,
       'description': description,
       'img': img,
+      'price': price,
       'date': date,
       'goals': goals,
       'organizers': organizers,
@@ -59,6 +62,7 @@ class CourseModel {
       description: map['description'] as String,
       img: map['img'] as String,
       date: map['date'] as Timestamp,
+      price: map['price'] as int,
       goals: List<String>.from((map['goals'].map((e) => e.toString()))),
       organizers:
           List<String>.from((map['organizers'].map((e) => e.toString()))),
@@ -81,6 +85,7 @@ extension CourseXModel on CourseModel {
       title: title,
       description: description,
       img: img,
+      price: price,
       date: date,
       goals: goals,
       organizers: organizers,
@@ -101,6 +106,7 @@ extension CourseXEntity on CourseEntity {
       title: title,
       description: description,
       img: img,
+      price: price,
       date: date,
       goals: goals,
       organizers: organizers,

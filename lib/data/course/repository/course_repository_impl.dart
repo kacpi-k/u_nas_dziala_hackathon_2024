@@ -56,4 +56,23 @@ class CourseRepositoryImpl extends CourseRepository {
       },
     );
   }
+
+  @override
+  Future<Either> enrollForCourse(
+      String userId, String courseId) async {
+    var returnedData =
+        await sl<CourseService>().enrollForCourse(userId, courseId);
+    return returnedData.fold(
+      (error) {
+        return Left(error);
+      },
+      (data) {
+        return Right(
+          List.from(data)
+              .map((e) => CourseModel.fromMap(e).toEntity())
+              .toList(),
+        );
+      },
+    );
+  }
 }

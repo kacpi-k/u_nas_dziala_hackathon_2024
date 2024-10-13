@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigator.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/constants/image_display_helper.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_page.dart';
 
 class CourseCardRow extends StatelessWidget {
   final CourseEntity courseEntity;
@@ -11,7 +13,10 @@ class CourseCardRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO Navigate to CoursePage
+        AppNavigator.push(
+          context,
+          CoursePage(courseEntity: courseEntity),
+        );
       },
       child: Container(
         width: 250,

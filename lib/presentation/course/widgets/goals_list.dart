@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
 
 class GoalsList extends StatelessWidget {
+  final CourseEntity courseEntity;
   const GoalsList({
     super.key,
-    required this.goalsList,
+    required this.courseEntity,
   });
-
-  final List goalsList;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: goalsList.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(goalsList[index]),
-              subtitle: Text('This is goal ${goalsList[index]}'),
-              trailing: Icon(Icons.check),
-            );
-          }),
-    );
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: courseEntity.goals.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(courseEntity.goals[index]),
+            //subtitle: Text('Cel ${courseEntity.goals[index]}'),
+            trailing: const Icon(Icons.check),
+          );
+        });
   }
 }
