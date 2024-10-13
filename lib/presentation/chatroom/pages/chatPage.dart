@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatRoomServices/chatRoomServices.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/widgets/chatBubble.dart';
 
 class ChatPage extends StatefulWidget {
   final String reciverUserEmail;
@@ -29,7 +30,17 @@ class _ChatpageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(title: Text(widget.reciverUserEmail)),
+      appBar: BasicAppbar(
+          title: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('Users')
+                  .doc(widget.reciverUserID)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                var userData = snapshot.data;
+               
+                return Text('${userData?.get('firstName')}');
+              })),
       body: Column(
         children: [Expanded(child: _buildMessageList()), _buildMessageInput()],
       ),
@@ -64,30 +75,52 @@ class _ChatpageState extends State<ChatPage> {
         ? Alignment.centerRight
         : Alignment.centerLeft;
 
-        return Container(
-          child: Column(
-            children: [
-              Text(data['senderEmail']),
-              Text(data['message'])
-            ],
-          )
-        );
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection('Users')
+              .doc(data['senderId'])
+              .snapshots() ,
+          builder: (context, snapshot) {
+            var userData = snapshot.data;
+            return Column(
+              crossAxisAlignment:
+                  (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                      ? CrossAxisAlignment.end
+                      : CrossAxisAlignment.start,
+              mainAxisAlignment:
+                  (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                      ? MainAxisAlignment.end
+                      : MainAxisAlignment.start,
+              children: [
+                Text(
+                    '${userData?.get('firstName')} ${userData?.get('lastName')}'),
+                Chatbubble(message: data['message'])
+              ],
+            );
+          }),
+    );
   }
-  Widget _buildMessageList(){
+
+  Widget _buildMessageList() {
     return StreamBuilder(
-      stream: _chatRoomServices.getMessages(widget.reciverUserID, _firebaseAuth.currentUser!.uid), 
-      builder: (context, snapshot){
-        if(snapshot.hasError){
-          return Text('Error ${snapshot.error}');
-        }
+        stream: _chatRoomServices.getMessages(
+            widget.reciverUserID, _firebaseAuth.currentUser!.uid),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text('Error ${snapshot.error}');
+          }
 
-        if(snapshot.connectionState == ConnectionState.waiting){
-          return CircularProgressIndicator();
-        }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
 
-        return ListView(
-          children: snapshot.data!.docs.map((document) => _buildMessageItem(document)).toList(),
-        );
-      });
+          return ListView(
+            children: snapshot.data!.docs
+                .map((document) => _buildMessageItem(document))
+                .toList(),
+          );
+        });
   }
 }
