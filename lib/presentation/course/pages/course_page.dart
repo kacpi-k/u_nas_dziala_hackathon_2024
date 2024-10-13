@@ -1,13 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:u_nas_dziala_hackathon_2024/common/bloc/button/button_state_cubit.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigator.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_app_button.dart';
-import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_reactive_button.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
-import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/enroll_for_course.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_page_signed.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/course_description.dart';
@@ -60,7 +56,7 @@ class CoursePage extends StatelessWidget {
                 child: _enrollButton(context),
               ),
               const SizedBox(height: 30),
-              _tmpButton(context),
+              // _tmpButton(context),
             ],
           ),
         ),
@@ -75,22 +71,26 @@ class CoursePage extends StatelessWidget {
         if (user != null) {
           AppNavigator.pushReplacement(context, const HomePage());
         } else {
-          AppNavigator.pushReplacement(context, const LoginPage());
+          AppNavigator.pushReplacement(
+              context,
+              LoginPage(
+                courseEntity: courseEntity,
+              ));
         }
       },
       title: 'Zapisz się',
     );
   }
 
-  Widget _tmpButton(BuildContext context) {
-    return BasicAppButton(
-      onPressed: () {
-        AppNavigator.pushReplacement(
-          context,
-          CoursePageSigned(courseEntity: courseEntity),
-        );
-      },
-      title: 'Tmp button',
-    );
-  }
+  // Widget _tmpButton(BuildContext context) {
+  //   return BasicAppButton(
+  //     onPressed: () {
+  //       AppNavigator.pushReplacement(
+  //         context,
+  //         CoursePageSigned(courseEntity: courseEntity),
+  //       );
+  //     },
+  //     title: 'Tmp button',
+  //   );
+  // }
 }

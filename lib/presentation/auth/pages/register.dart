@@ -8,11 +8,13 @@ import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_reactive
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/data/auth/models/user_creation_req.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/auth/usecases/signup.dart';
+import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final CourseEntity courseEntity;
+  const RegisterPage({super.key, required this.courseEntity});
 
   @override
   State<StatefulWidget> createState() => _RegisterPageState();
@@ -83,7 +85,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               builder: (context) =>
                                   BlocProvider<ButtonStateCubit>(
                                 create: (context) => ButtonStateCubit(),
-                                child: const LoginPage(),
+                                child: LoginPage(
+                                  courseEntity: widget.courseEntity,
+                                ),
                               ),
                             ),
                           );

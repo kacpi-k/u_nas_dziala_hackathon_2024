@@ -58,7 +58,7 @@ class CourseLabel extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Text(
         courseEntity.price != 0
-            ? 'Cena: ${courseEntity.price.toString()}zł'
+            ? '   ${courseEntity.price.toString()}zł'
             : 'Bezpłatne',
         style: const TextStyle(
           fontWeight: FontWeight.w800,

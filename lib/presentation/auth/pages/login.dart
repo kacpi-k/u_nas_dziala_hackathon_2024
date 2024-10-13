@@ -9,11 +9,14 @@ import 'package:u_nas_dziala_hackathon_2024/core/configs/assets/app_images.dart'
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/data/auth/models/user_sigin_req.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/auth/usecases/singin.dart';
+import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/register.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_page_signed.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final CourseEntity courseEntity;
+  const LoginPage({super.key, required this.courseEntity});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -46,7 +49,9 @@ class _LoginPageState extends State<LoginPage> {
               if (state is ButtonSuccessState) {
                 AppNavigator.pushAndRemove(
                   context,
-                  const HomePage(),
+                  CoursePageSigned(
+                    courseEntity: widget.courseEntity,
+                  ),
                 );
               }
             },
@@ -88,7 +93,8 @@ class _LoginPageState extends State<LoginPage> {
                               builder: (context) =>
                                   BlocProvider<ButtonStateCubit>(
                                 create: (context) => ButtonStateCubit(),
-                                child: const RegisterPage(),
+                                child: RegisterPage(
+                                    courseEntity: widget.courseEntity),
                               ),
                             ),
                           );

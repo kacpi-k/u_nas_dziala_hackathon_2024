@@ -8,51 +8,50 @@ class CourseWidgetList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return const ChatRoomMain();
-              }));
-            },
-            child: const Card(
-              child: ListTile(
-                title: Text('Komunikator'),
-              ),
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return const ChatRoomMain();
+            }));
+          },
+          child: const Card(
+            child: ListTile(
+              title: Text('Komunikator'),
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return const AttachmentPage();
-              }));
-            },
-            child: const Card(
-              child: ListTile(
-                title: Text('Materiały do pobrania'),
-              ),
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return const AttachmentPage();
+            }));
+          },
+          child: const Card(
+            child: ListTile(
+              title: Text('Materiały do pobrania'),
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return const SchedulePage();
-              }));
-            },
-            child: const Card(
-              child: ListTile(
-                title: Text('Harmonogram szkolenia'),
-              ),
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return const SchedulePage();
+            }));
+          },
+          child: const Card(
+            child: ListTile(
+              title: Text('Harmonogram szkolenia'),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
