@@ -7,7 +7,9 @@ import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/assets/app_pdf.dart';
 
 class AttachmentView extends StatefulWidget {
-  const AttachmentView({super.key});
+  final String pathExec;
+  final String documentName;
+  const AttachmentView({super.key,required this.pathExec, required this.documentName});
 
   @override
   State<AttachmentView> createState() => _AttachmentViewState();
@@ -22,7 +24,7 @@ class _AttachmentViewState extends State<AttachmentView> {
   }
 
   Future<void> loadPdf() async {
-    String path = await getFileFromAsset(AppPdf.samplePDF);
+    String path = await getFileFromAsset(widget.pathExec);
     setState(() {
       localPath = path;
     });
@@ -30,7 +32,7 @@ class _AttachmentViewState extends State<AttachmentView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppbar(title: Text('Nazwa dokumentu'),),
+      appBar: BasicAppbar(title: Text(widget.documentName),),
       body: localPath.isNotEmpty
           ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

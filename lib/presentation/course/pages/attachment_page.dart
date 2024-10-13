@@ -1,6 +1,8 @@
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
+import 'package:u_nas_dziala_hackathon_2024/core/configs/assets/app_pdf.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/attachment_view.dart';
 
 class AttachmentPage extends StatelessWidget {
   const AttachmentPage({super.key});
@@ -22,9 +24,23 @@ class AttachmentPage extends StatelessWidget {
                 itemBuilder: (context, index){
                   return InkWell(
                     onTap: (){},
-                    child: ListTile(
-                      title: Text(attachmentList[index]),
-                      trailing: const Icon(Icons.more_vert),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+
+                          String path;
+                          if(index == 0){path = AppPdf.ppptPDF;}
+                          else if(index == 1){path = AppPdf.examplePDF;}
+                          else{path = AppPdf.samplePDF;}
+
+
+                          return AttachmentView(pathExec: path, documentName: attachmentList[index]);
+                        }));
+                      },
+                      child: ListTile(
+                        title: Text(attachmentList[index]),
+                        trailing: const Icon(Icons.more_vert),
+                      ),
                     ),
                   );
                 }),

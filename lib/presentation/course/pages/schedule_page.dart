@@ -70,7 +70,7 @@ List<DataRow> _rows()=> [
      const DataRow(cells: [
       DataCell(Text('9:00')),
       DataCell(Text('11:00')),
-      DataCell(Text('Panel IT '))
+      DataCell(Text('Panel IT dla poczatkujacych'))
     ]),
     const DataRow(cells: [
       DataCell(Text('11:00')),
