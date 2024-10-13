@@ -3,13 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_theme.dart';
 import 'package:u_nas_dziala_hackathon_2024/firebase_options.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/register.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatPage.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatRoom_main.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/attachment_page.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/attachment_view.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_page.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/schedule_page.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 import 'package:u_nas_dziala_hackathon_2024/service_locator.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+    await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await initializeDependecies();
@@ -24,7 +30,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      home: HomePage(),
+      home: const RegisterPage(),
     );
   }
 }

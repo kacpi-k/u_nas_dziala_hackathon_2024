@@ -26,11 +26,11 @@ class CoursePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CourseLabel(),
-              SizedBox(
+              const CourseLabel(),
+              const SizedBox(
                 height: 20,
               ),
-              Center(
+              const Center(
                   child: Text(
                 'Cele szkolenia',
                 style: TextStyle(
@@ -39,10 +39,10 @@ class CoursePage extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               )),
               GoalsList(goalsList: goalsList),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Center(
+              const Center(
                   child: Text(
                 'Prowadzący',
                 style: TextStyle(
@@ -50,7 +50,7 @@ class CoursePage extends StatelessWidget {
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
               )),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               SpeakersWidget(speakerList: speakerList),
             ],
           ),
@@ -58,7 +58,7 @@ class CoursePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
           backgroundColor: AppColors.primary,
-          label: Text(
+          label: const Text(
             'Zapisz się!',
             style: TextStyle(color: Colors.black),
           ),
