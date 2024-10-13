@@ -7,7 +7,7 @@ class AttachmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List attachmentList = ['Regulamin szkolenia', 'Wstęp do programowania obiektowego','JavaScript w praktyce'];
+    List attachmentList = ['Załącznik nr.1 ', 'Załącznik nr.2','Prezentacja '];
     return Scaffold(
       appBar: const BasicAppbar(),
       body: Padding(
