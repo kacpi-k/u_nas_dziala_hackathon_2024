@@ -27,7 +27,7 @@ class SpeakersWidget extends StatelessWidget {
                   height: 100,
                   width: 110,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage(
                             AppImages.speakerPhoto,
                           ),
@@ -37,7 +37,7 @@ class SpeakersWidget extends StatelessWidget {
                 Container(
                   height: 50,
                   width: 110,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     //border: Border.all(),
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(10),
@@ -48,7 +48,7 @@ class SpeakersWidget extends StatelessWidget {
                   child: Text(
                     speakerList[index],
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                          fontWeight: FontWeight.w500),
                   ),
                 )
