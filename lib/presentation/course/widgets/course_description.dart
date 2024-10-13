@@ -7,13 +7,26 @@ class CourseDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      textAlign: TextAlign.center,
-      courseEntity.description,
-      style: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-      ),
+    return Column(
+      children: [
+        Text(
+          textAlign: TextAlign.center,
+          courseEntity.title,
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        const SizedBox(height: 20),
+        Text(
+          textAlign: TextAlign.center,
+          courseEntity.description,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ],
     );
   }
 }
