@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/bloc/button/button_state.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/bloc/button/button_state_cubit.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigator.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_reactive_button.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/data/auth/models/user_creation_req.dart';
@@ -31,6 +32,10 @@ class _RegisterPageState extends State<RegisterPage> {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
+          appBar: BasicAppbar(
+            hideBack: true,
+            title: const Text('Rejestracja'),
+          ),
           body: BlocListener<ButtonStateCubit, ButtonState>(
             listener: (context, state) {
               if (state is ButtonFailureState) {
@@ -53,8 +58,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _signupText(context),
-                  const SizedBox(height: 20),
+                  // _signupText(context),
+                  // const SizedBox(height: 20),
                   _firstNameField(context),
                   const SizedBox(height: 10),
                   _lastNameField(context),
@@ -201,6 +206,13 @@ class _RegisterPageState extends State<RegisterPage> {
               usecase: SignupUseCase(),
               params: req,
             );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Konto zostało utworzone.'),
+            behavior: SnackBarBehavior.floating,
+            duration: Duration(seconds: 3),
+          ),
+        );
       },
       title: 'Zarejestruj',
     );

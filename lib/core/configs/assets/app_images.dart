@@ -3,4 +3,5 @@ class AppImages {
   static const logo = '${basePath}pppt_logo.png';
   static const bussinesPhoto = '${basePath}business_photo.jpg';
   static const speakerPhoto = '${basePath}speaker_photo.webp';
+  static const ppptLogoWhite = '${basePath}pppt_logo_white.png';
 }
