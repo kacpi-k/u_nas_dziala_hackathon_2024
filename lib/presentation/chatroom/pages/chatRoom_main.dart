@@ -16,7 +16,7 @@ class _ChatRoomMainState extends State<ChatRoomMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppbar(),
+      appBar: const BasicAppbar(title: Text('Uczestnicy szkolenia'),),
       body: _usersList(),
     )
     ;

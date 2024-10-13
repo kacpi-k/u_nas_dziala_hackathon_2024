@@ -32,11 +32,13 @@ class AllCategoriesPage extends StatelessWidget {
   }
 
   Widget _shopByCategories() {
-    return const Text(
-      'Wszystkie kategorie',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 22,
+    return Center(
+      child: const Text(
+        'Wszystkie kategorie',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 22,
+        ),
       ),
     );
   }

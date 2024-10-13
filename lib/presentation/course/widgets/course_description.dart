@@ -8,6 +8,7 @@ class CourseDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      textAlign: TextAlign.center,
       courseEntity.description,
       style: const TextStyle(
         fontSize: 14,
