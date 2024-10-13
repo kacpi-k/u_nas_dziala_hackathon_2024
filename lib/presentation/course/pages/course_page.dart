@@ -8,12 +8,12 @@ class CoursePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List goalsList =['Goal 1', 'Goal 2', 'Goal 3'];
-    List speakerList =['Jan Matejko','Adam Mickiewicz', 'Henryk Sienkiewicz'];
+    List goalsList = ['Goal 1', 'Goal 2', 'Goal 3'];
+    List speakerList = ['Jan Matejko', 'Adam Mickiewicz', 'Henryk Sienkiewicz'];
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: const BasicAppbar(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -31,7 +31,7 @@ class CoursePage extends StatelessWidget {
                         height: 150,
                         width: 200,
                         decoration: BoxDecoration(
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: AssetImage(
                                   AppImages.bussinesPhoto,
                                 ),
@@ -47,73 +47,67 @@ class CoursePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Nasze cele',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             Flexible(
               child: ListView.builder(
                 itemCount: goalsList.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(goalsList[index]),
                     subtitle: Text('This is goal ${goalsList[index]}'),
-                    trailing: Icon(Icons.check),
+                    trailing: const Icon(Icons.check),
                   );
-                }),
+                },
+              ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20),
             Flexible(
               child: ListView.builder(
                 itemCount: speakerList.length,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   return Container(
                     height: 100,
                     width: 300,
                     decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(30),
-                      color: AppColors.niceOrange
-                    ),
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(30),
+                        color: AppColors.niceOrange),
                     child: Row(
                       children: [
                         Container(
                           height: 100,
                           width: 100,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                  AppImages.speakerPhoto,
-                                ),
-                                fit: BoxFit.fill),
-                            border: Border.all(),
-                            borderRadius: BorderRadius.circular(30)),
+                              image: const DecorationImage(
+                                  image: AssetImage(
+                                    AppImages.speakerPhoto,
+                                  ),
+                                  fit: BoxFit.fill),
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(30)),
                         ),
-                        Container(
-                          child: Text(speakerList[index]),
-                        )
+                        Text(speakerList[index])
                       ],
                     ),
-                    
                   );
-                })),
-                
-            
-            
+                },
+              ),
+            ),
           ],
-          
         ),
-        
       ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: AppColors.primary,
-        
-        label: Text('Zapisz się!',style: TextStyle(color: Colors.black),),
-        onPressed: (){}),
+        label: const Text(
+          'Zapisz się!',
+          style: TextStyle(color: Colors.black),
+        ),
+        onPressed: () {},
+      ),
     );
-  
   }
 }

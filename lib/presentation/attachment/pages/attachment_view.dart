@@ -27,19 +27,23 @@ class _AttachmentViewState extends State<AttachmentView> {
       localPath = path;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(title: Text('Nazwa dokumentu'),),
+      appBar: const BasicAppbar(
+        title: Text('Nazwa dokumentu'),
+      ),
       body: localPath.isNotEmpty
           ? Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: PDFView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: PDFView(
                 filePath: localPath,
               ),
-          )
-          : Center(child: CircularProgressIndicator()),
-      
+            )
+          : const Center(
+              child: CircularProgressIndicator(),
+            ),
     );
   }
 }
