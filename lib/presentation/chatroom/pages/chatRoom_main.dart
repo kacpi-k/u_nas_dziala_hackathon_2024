@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
-import 'package:u_nas_dziala_hackathon_2024/data/auth/source/auth_firebase_service.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatPage.dart';
 
 class ChatRoomMain extends StatefulWidget {
@@ -17,7 +16,7 @@ class _ChatRoomMainState extends State<ChatRoomMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: const BasicAppbar(),
       body: _usersList(),
     )
     ;
@@ -29,11 +28,11 @@ class _ChatRoomMainState extends State<ChatRoomMain> {
       stream: FirebaseFirestore.instance.collection('Users').snapshots(), 
       builder: (context, snapshots){
         if (snapshots.hasError){
-          return Text('Error');
+          return const Text('Error');
         }
 
         if(snapshots.connectionState == ConnectionState.waiting){
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
 
 
@@ -68,7 +67,7 @@ class _ChatRoomMainState extends State<ChatRoomMain> {
                     child: Card(
                       color: AppColors.primary,
                       child: ListTile(
-                      title: Text('${userData?.get('firstName')} ${userData?.get('lastName')}', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),),
+                      title: Text('${userData?.get('firstName')} ${userData?.get('lastName')}', style: const TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),),
                       onTap: (){
                         Navigator.push(
                         context, 
