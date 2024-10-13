@@ -9,6 +9,7 @@ import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_reactive
 import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/enroll_for_course.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_page_signed.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/course_description.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/course_label.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/goals_list.dart';
@@ -59,6 +60,7 @@ class CoursePage extends StatelessWidget {
                 child: _enrollButton(context),
               ),
               const SizedBox(height: 30),
+              _tmpButton(context),
             ],
           ),
         ),
@@ -77,6 +79,18 @@ class CoursePage extends StatelessWidget {
         }
       },
       title: 'Zapisz się',
+    );
+  }
+
+  Widget _tmpButton(BuildContext context) {
+    return BasicAppButton(
+      onPressed: () {
+        AppNavigator.pushReplacement(
+          context,
+          CoursePageSigned(courseEntity: courseEntity),
+        );
+      },
+      title: 'Tmp button',
     );
   }
 }
