@@ -24,7 +24,7 @@ class CourseLabel extends StatelessWidget {
                   height: 150,
                   width: 200,
                   decoration: BoxDecoration(
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage(
                             AppImages.bussinesPhoto,
                           ),
@@ -35,8 +35,8 @@ class CourseLabel extends StatelessWidget {
                 Flexible(
                   child: Container(
                     height: 200,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Center(
                         child: Text('Oto krótki opis szkolenia, zawiera proste i zrozumiałe informacje na temat zakresu kursu', style: TextStyle(color: Colors.black54),)
                       ),
