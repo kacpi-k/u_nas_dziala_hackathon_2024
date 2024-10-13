@@ -21,10 +21,28 @@ class CourseRepositoryImpl extends CourseRepository {
       },
     );
   }
-  
+
   @override
   Future<Either> getCourses() async {
     var returnedData = await sl<CourseService>().getCourses();
+    return returnedData.fold(
+      (error) {
+        return Left(error);
+      },
+      (data) {
+        return Right(
+          List.from(data)
+              .map((e) => CourseModel.fromMap(e).toEntity())
+              .toList(),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<Either> getCoursesByCategoryId(String categoryId) async {
+    var returnedData =
+        await sl<CourseService>().getCoursesByCategoryId(categoryId);
     return returnedData.fold(
       (error) {
         return Left(error);

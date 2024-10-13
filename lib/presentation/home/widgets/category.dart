@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/bloc/categories/categories_display_cubit.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/bloc/categories/categories_display_state.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigator.dart';
 import 'package:u_nas_dziala_hackathon_2024/core/configs/theme/app_colors.dart';
 import 'package:u_nas_dziala_hackathon_2024/domain/category/entity/category_entity.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/all_categories/pages/all_categories.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/category_courses/pages/category_pages.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -53,7 +56,10 @@ class Categories extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              // TODO Navigate to
+              AppNavigator.push(
+                context,
+                const AllCategoriesPage(),
+              );
             },
             child: const Text(
               'Zobacz wszystkie',
@@ -79,6 +85,7 @@ class Categories extends StatelessWidget {
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.secondBackground),
                 color: AppColors.primary,
               ),
               child: Padding(

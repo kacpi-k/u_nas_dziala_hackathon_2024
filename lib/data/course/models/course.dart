@@ -4,6 +4,7 @@ import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.d
 
 class CourseModel {
   final String courseId;
+  final String categoryId;
   final String title;
   final String description;
   final String img;
@@ -17,6 +18,7 @@ class CourseModel {
 
   CourseModel({
     required this.courseId,
+    required this.categoryId,
     required this.title,
     required this.description,
     required this.img,
@@ -32,6 +34,7 @@ class CourseModel {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'courseId': courseId,
+      'categoryId': categoryId,
       'title': title,
       'description': description,
       'img': img,
@@ -48,6 +51,7 @@ class CourseModel {
   factory CourseModel.fromMap(Map<String, dynamic> map) {
     return CourseModel(
       courseId: map['courseId'] as String,
+      categoryId: map['categoryId'] as String,
       title: map['title'] as String,
       description: map['description'] as String,
       img: map['img'] as String,
@@ -67,6 +71,7 @@ extension CourseXModel on CourseModel {
   CourseEntity toEntity() {
     return CourseEntity(
       courseId: courseId,
+      categoryId: categoryId,
       title: title,
       description: description,
       img: img,
@@ -85,6 +90,7 @@ extension CourseXEntity on CourseEntity {
   CourseModel fromEntity() {
     return CourseModel(
       courseId: courseId,
+      categoryId: categoryId,
       title: title,
       description: description,
       img: img,
