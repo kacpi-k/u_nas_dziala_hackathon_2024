@@ -5,6 +5,7 @@ import 'package:u_nas_dziala_hackathon_2024/firebase_options.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/chatroom/pages/chatRoom_main.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/schedule_page.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/questionnaire/pages/questionnaire.dart';
 import 'package:u_nas_dziala_hackathon_2024/service_locator.dart';
 

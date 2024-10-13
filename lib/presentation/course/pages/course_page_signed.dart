@@ -1,21 +1,27 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/bloc/button/button_state_cubit.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/helper/navigator/app_navigator.dart';
 import 'package:u_nas_dziala_hackathon_2024/common/widgets/appbar/app_bar.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_app_button.dart';
+import 'package:u_nas_dziala_hackathon_2024/common/widgets/button/basic_reactive_button.dart';
+import 'package:u_nas_dziala_hackathon_2024/domain/course/entity/course_entity.dart';
+import 'package:u_nas_dziala_hackathon_2024/domain/course/usecases/enroll_for_course.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/course_description.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/course_label.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/course_widgets_list.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/goals_list.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/course/widgets/speakers_widget.dart';
+import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 
-class CoursePage extends StatelessWidget {
-  const CoursePage({super.key});
+class CoursePageSigned extends StatelessWidget {
+  final CourseEntity courseEntity;
+  const CoursePageSigned({super.key, required this.courseEntity});
 
   @override
   Widget build(BuildContext context) {
-    List goalsList = ['Goal 1', 'Goal 2', 'Goal 3', 'Goal 4'];
-    List speakerList = [
-      'Jan Matejko',
-      'Adam Mickiewicz',
-      'Henryk Sienkiewicz',
-      'Marek Towarek'
-    ];
     return Scaffold(
       appBar: const BasicAppbar(),
       body: Padding(
@@ -24,10 +30,10 @@ class CoursePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CourseLabel(),
-              const SizedBox(
-                height: 20,
-              ),
+              CourseLabel(courseEntity: courseEntity),
+              const SizedBox(height: 40),
+              CourseDescription(courseEntity: courseEntity),
+              const SizedBox(height: 20),
               const Center(
                   child: Text(
                 'Cele szkolenia',
@@ -36,10 +42,8 @@ class CoursePage extends StatelessWidget {
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
               )),
-              GoalsList(goalsList: goalsList),
-              const SizedBox(
-                height: 20,
-              ),
+              CourseWidgetList(),
+              const SizedBox(height: 20),
               const Center(
                   child: Text(
                 'Prowadzący',
@@ -48,14 +52,32 @@ class CoursePage extends StatelessWidget {
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
               )),
-              const SizedBox(
-                height: 20,
+              const SizedBox(height: 20),
+              SpeakersWidget(courseEntity: courseEntity),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: _enrollButton(context),
               ),
-              SpeakersWidget(speakerList: speakerList),
+              const SizedBox(height: 30),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _enrollButton(BuildContext context) {
+    return BasicAppButton(
+      onPressed: () {
+        User? user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          AppNavigator.pushReplacement(context, const HomePage());
+        } else {
+          AppNavigator.pushReplacement(context, const LoginPage());
+        }
+      },
+      title: 'Zapisz się',
     );
   }
 }
