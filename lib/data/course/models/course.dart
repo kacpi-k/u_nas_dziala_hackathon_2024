@@ -9,6 +9,7 @@ class CourseModel {
   final String description;
   final String img;
   final Timestamp date;
+  final List<String> goals;
   final List<String> organizers;
   final List<String> speakers;
   final List<String> participants;
@@ -23,6 +24,7 @@ class CourseModel {
     required this.description,
     required this.img,
     required this.date,
+    required this.goals,
     required this.organizers,
     required this.speakers,
     required this.participants,
@@ -39,6 +41,7 @@ class CourseModel {
       'description': description,
       'img': img,
       'date': date,
+      'goals': goals,
       'organizers': organizers,
       'speakers': speakers,
       'participants': participants,
@@ -56,9 +59,12 @@ class CourseModel {
       description: map['description'] as String,
       img: map['img'] as String,
       date: map['date'] as Timestamp,
-      organizers: List<String>.from((map['organizers'].map((e) => e.toString()))),
+      goals: List<String>.from((map['goals'].map((e) => e.toString()))),
+      organizers:
+          List<String>.from((map['organizers'].map((e) => e.toString()))),
       speakers: List<String>.from((map['speakers'].map((e) => e.toString()))),
-      participants: List<String>.from((map['participants'].map((e) => e.toString()))),
+      participants:
+          List<String>.from((map['participants'].map((e) => e.toString()))),
       materials: List<String>.from((map['materials'].map((e) => e.toString()))),
       schedule: List<ScheduleEventModel>.from(
           map['schedule'].map((e) => ScheduleEventModel.fromMap(e))),
@@ -76,6 +82,7 @@ extension CourseXModel on CourseModel {
       description: description,
       img: img,
       date: date,
+      goals: goals,
       organizers: organizers,
       speakers: speakers,
       participants: participants,
@@ -95,6 +102,7 @@ extension CourseXEntity on CourseEntity {
       description: description,
       img: img,
       date: date,
+      goals: goals,
       organizers: organizers,
       speakers: speakers,
       participants: participants,

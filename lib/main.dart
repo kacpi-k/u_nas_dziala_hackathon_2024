@@ -16,7 +16,7 @@ import 'package:u_nas_dziala_hackathon_2024/presentation/auth/pages/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await initializeDependecies();
@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      home: CoursePage(),
+      home: ChatRoomMain(),
     );
   }
 }
