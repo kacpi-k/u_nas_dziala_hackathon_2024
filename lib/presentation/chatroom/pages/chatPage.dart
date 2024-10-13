@@ -35,6 +35,7 @@ class _ChatpageState extends State<ChatPage> {
           title: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('Users')
+                  
                   .doc(widget.reciverUserID)
                   .snapshots(),
               builder: (context, snapshot) {

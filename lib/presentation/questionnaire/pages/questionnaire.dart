@@ -4,6 +4,8 @@ import 'package:u_nas_dziala_hackathon_2024/presentation/course/pages/course_pag
 import 'package:u_nas_dziala_hackathon_2024/presentation/home/pages/home.dart';
 import 'package:u_nas_dziala_hackathon_2024/presentation/questionnaire/widgets/starRating.dart';
 
+
+
 class Questionnaire extends StatelessWidget {
   const Questionnaire({super.key});
 
