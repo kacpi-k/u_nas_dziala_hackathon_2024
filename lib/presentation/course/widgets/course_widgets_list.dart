@@ -52,6 +52,19 @@ class CourseWidgetList extends StatelessWidget {
             ),
           ),
         ),
+        InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return const Questionnaire();
+            }));
+          },
+          child: const Card(
+            child: ListTile(
+              title: Text('Ankieta uczestnika'),
+            ),
+          ),
+        ),
       ],
     );
   }
